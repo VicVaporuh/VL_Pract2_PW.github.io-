@@ -1,56 +1,109 @@
 class ShoppingCart {
     constructor() {
-        this.cart = JSON.parse(localStorage.getItem('cart')) || {};
+        const storedCart = JSON.parse(localStorage.getItem('cart'));
+        this.cart = Array.isArray(storedCart) ? storedCart : [];
         this.cartCountElement = document.getElementById('cart-count');
+        this.cartContainerElement = document.getElementById('cart-container');
         this.updateCartCount();
+        this.renderCartItems();  // Llamamos a la función para renderizar los productos al cargar la página
     }
 
     // Agregar un producto al carrito
-    addItem(productId, amount = 1) {
-        if (this.cart[productId]) {
-            this.cart[productId] += amount;
+    addItem(product, amount = 1) {
+        const existingProduct = this.cart.find(item => item.product._id === product._id);
+
+        if (existingProduct) {
+            existingProduct.amount += amount;
         } else {
-            this.cart[productId] = amount;
+            this.cart.push({ product, amount });
         }
         this.saveCart();
     }
 
     // Actualizar la cantidad de un producto
-    updateItem(productId, newAmount) {
+    updateItem(product, newAmount) {
         if (newAmount <= 0) {
-            this.removeItem(productId);
+            this.removeItem(product);
         } else {
-            this.cart[productId] = newAmount;
-            this.saveCart();
+            const existingProduct = this.cart.find(item => item.product._id === product._id);
+            if (existingProduct) {
+                existingProduct.amount = newAmount;
+                this.saveCart();
+            }
         }
     }
 
     // Eliminar un producto del carrito
-    removeItem(productId) {
-        delete this.cart[productId];
+    removeItem(product) {
+        this.cart = this.cart.filter(item => item.product._id !== product._id);
         this.saveCart();
     }
 
-    // Calcular el total de productos en el carrito
+    // Calcular el total de productos en el carrito (solo cantidad, no precio)
     getTotalItems() {
-        return Object.values(this.cart).reduce((sum, qty) => sum + qty, 0);
+        return this.cart.reduce((sum, item) => sum + item.amount, 0);
     }
 
     // Guardar el carrito en localStorage y actualizar el contador
     saveCart() {
         localStorage.setItem('cart', JSON.stringify(this.cart));
-        this.updateCartCount(); // Actualizar contador en la UI
+        this.updateCartCount();
+        this.renderCartItems();  // Volver a renderizar los productos después de actualizar el carrito
     }
-    
 
     // Actualizar el número de productos en la UI
     updateCartCount() {
-        const cartCountElement = document.getElementById('cart-count');
-        if (cartCountElement) {
-            cartCountElement.textContent = this.getTotalItems();
+        if (this.cartCountElement) {
+            this.cartCountElement.textContent = this.getTotalItems();
         }
     }
-    
+
+    // Función para renderizar los productos del carrito en la página
+    renderCartItems() {
+        if (this.cartContainerElement) {
+            this.cartContainerElement.innerHTML = '';  // Limpiar el contenedor antes de agregar los productos
+
+            this.cart.forEach(item => {
+                // Generamos el HTML para cada producto en el carrito
+                const productHTML = `
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <!-- Contenido del producto -->
+                                <div class="col-md-8 d-flex flex-column justify-content-start">
+                                    <h5 class="card-title">${item.product.name}</h5>
+
+                                    <!-- Cantidad -->
+                                    <div class="d-flex align-items-center mt-3">
+                                        <span class="input-group-text">Cantidad</span>
+                                        <input type="number" class="form-control w-25 ms-2" value="${item.amount}" min="1" id="cantidad${item.product._id}">
+                                        <span class="input-group-text ms-2">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </span>
+                                    </div>
+
+                                    <!-- Precio -->
+                                    <div class="d-flex align-items-center mt-3">
+                                        <span class="input-group-text">Precio</span>
+                                        <input type="text" class="form-control w-25 ms-2" value="$${item.product.price.toFixed(2)}" id="precio${item.product._id}" readonly>
+                                        <span class="input-group-text ms-2">MXN</span>
+                                    </div>
+                                </div>
+
+                                <!-- Imagen del producto -->
+                                <div class="col-md-4 d-flex justify-content-end align-items-center">
+                                    <img src="${item.product.imgUrl}" class="img-fluid" alt="Producto ${item.product._id}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // Insertamos el HTML generado en el contenedor
+                this.cartContainerElement.innerHTML += productHTML;
+            });
+        }
+    }
 }
 
 // Crear una única instancia global

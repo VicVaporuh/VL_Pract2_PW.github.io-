@@ -117,12 +117,15 @@ renderProductCard() {
         </div>
     `;
 
-    // Agregar evento para añadir el producto al carrito al hacer clic en la imagen
-    const img = card.querySelector('img');
-    img.addEventListener('click', () => {
-        console.log(`Imagen clickeada: ${this.name}`);
-        shoppingCart.addItem(this.id, 1); // Asumiendo que `shoppingCart` es tu instancia del carrito
-    });
+// Agregar evento para añadir el producto al carrito al hacer clic en la imagen
+const img = card.querySelector('img');
+img.addEventListener('click', () => {
+    // Aquí asumimos que `this` es un objeto de tipo `Producto` dentro del contexto del card
+    console.log(`Imagen clickeada: ${this.name}`);
+
+    // Ahora le pasamos el objeto `Producto` completo a `addItem`
+    shoppingCart.addItem(this, 1); // `this` es la instancia de Producto que se debe pasar
+});
 
     return card;
 }

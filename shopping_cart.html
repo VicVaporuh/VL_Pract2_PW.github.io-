@@ -79,7 +79,8 @@
             </div>
             <a href="shopping_cart.html" class="d-block text-decoration-none ms-1 me-1 mt-1">
                 <i class="fas fa-shopping-cart" style="color: white;"></i>
-                <span class="badge-pill" style="color: white;">2</span>
+                <span id="cart-count" class="badge-pill" style="color: white;">0</span>
+            </a>            
             </a>
         </div>
     </nav>
@@ -87,42 +88,8 @@
     <div class="container mt-5">
         <div class="row">
             <!-- Productos -->
-            <div class="col-md-8">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <div class="row">
-                            <!-- Contenido del producto -->
-                            <div class="col-md-8 d-flex flex-column justify-content-start">
-                                <h5 class="card-title">Cama para perro cuadrada</h5>
-
-                                <!-- Cantidad -->
-                                <div class="d-flex align-items-center mt-3">
-                                    <span class="input-group-text">Cantidad</span>
-                                    <input type="number" class="form-control w-25 ms-2" value="2" min="1"
-                                        id="cantidad1">
-                                    <span class="input-group-text ms-2">
-                                        <i class="fas fa-pencil-alt"></i>
-                                    </span>
-                                </div>
-
-                                <!-- Precio -->
-                                <div class="d-flex align-items-center mt-3">
-                                    <span class="input-group-text">Precio</span>
-                                    <input type="text" class="form-control w-25 ms-2" value="$1998.98" id="precio1"
-                                        readonly>
-                                    <span class="input-group-text ms-2">MXN</span>
-                                </div>
-                            </div>
-
-                            <!-- Imagen del producto -->
-                            <div class="col-md-4 d-flex justify-content-end align-items-center">
-                                <img src="https://vicvaporuh.github.io/VL_Pract1_PW.github.io/CamaCuadradaPerro.jpg"
-                                    class="img-fluid" alt="Producto 1">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
+            <div id="cart-container" class="col-md-8">
+                <!-- ========== aqui van los productos ========== -->
             </div>
             <!-- Total de compra -->
             <div class="col-md-4 total-section">
@@ -157,7 +124,8 @@
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
                 crossorigin="anonymous">
             </script>
+            <script type="module" src="shoppingCart.js"></script>
             <script type="module" src="scripts.js"></script>
-</body>
+        </body>
 
 </html>
