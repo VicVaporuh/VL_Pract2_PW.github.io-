@@ -1,6 +1,6 @@
 import Product from './products.js';
 
-const API_URL = "https://crudcrud.com/api/769f84e56ff94f01b47ed48164c911a3/products";
+const API_URL = "https://crudcrud.com/api/a13d01079acd407f87c243fc43ca55cc/products";
 const productData = document.getElementById("ProductCards");
 
 const productsPerPage = 8;

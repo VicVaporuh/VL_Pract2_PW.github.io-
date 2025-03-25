@@ -1,3 +1,5 @@
+import shoppingCart from './shoppingCart.js';
+
 class Product {
     // Constructor
     constructor({ 
@@ -96,24 +98,35 @@ class Product {
         this.description = description;
     }
 
-    // Método para renderizar la tarjeta del producto
-    renderProductCard() {
-        const card = document.createElement('div');
-        card.classList.add('col-6', 'col-md-4', 'col-lg-3');
-        card.innerHTML = `
-            <div class="card h-100">
-                <img src="${this.imgUrl}" class="card-img-top img-fluid ps-3 pt-3 pe-3" alt="${this.name}">
-                <div class="card-body d-flex flex-column">
-                    <p class="card-text ms-4 me-4">
-                        ${this.description}
-                        <br> <br>
-                        1 paquete por ${this.price} MX
-                    </p>
-                </div>
+// Método para renderizar la tarjeta del producto
+renderProductCard() {
+    const card = document.createElement('div');
+    card.classList.add('col-6', 'col-md-4', 'col-lg-3');
+
+    card.innerHTML = `
+        <div class="card h-100">
+            <img src="${this.imgUrl}" class="card-img-top img-fluid ps-3 pt-3 pe-3" 
+                 alt="${this.name}" style="cursor: pointer;">
+            <div class="card-body d-flex flex-column">
+                <p class="card-text ms-4 me-4">
+                    ${this.description}
+                    <br> <br>
+                    1 paquete por ${this.price} MX
+                </p>
             </div>
-        `;
-        return card;
-    }
+        </div>
+    `;
+
+    // Agregar evento para añadir el producto al carrito al hacer clic en la imagen
+    const img = card.querySelector('img');
+    img.addEventListener('click', () => {
+        console.log(`Imagen clickeada: ${this.name}`);
+        shoppingCart.addItem(this.id, 1); // Asumiendo que `shoppingCart` es tu instancia del carrito
+    });
+
+    return card;
+}
+
 
 // Método estático para crear un producto desde un JSON
 static createFromJson(jsonValue) {

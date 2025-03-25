@@ -33,8 +33,10 @@
         }
 
         .input-group {
-            max-width: 250px; /* Controla el ancho máximo de los bloques */
-            margin: 0 auto; /* Centra los bloques */
+            max-width: 250px;
+            /* Controla el ancho máximo de los bloques */
+            margin: 0 auto;
+            /* Centra los bloques */
         }
 
         .input-group input {
@@ -86,80 +88,42 @@
         <div class="row">
             <!-- Productos -->
             <div class="col-md-8">
-                <!-- Producto 1 -->
- <!-- Producto 1 -->
-    <div class="card mb-3">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-9">
-                    <h5 class="card-title d-inline">Cama para perro cuadrada</h5>
-                </div>
-                <div class="col-3 text-end">
-                    <img src="CamaCuadradaPerro.jpg" class="card-img-right img-fluid" alt="Producto 1">
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-sm-6 col-md-4">
-                    <div class="input-group">
-                        <!-- Cantidad Input Group -->
-                        <span class="input-group-text">Cantidad</span>
-                        <input type="number" class="form-control" value="2" min="1" id="cantidad1">
-                        <span class="input-group-text">
-                            <i class="fas fa-pencil-alt"></i>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-sm-6 col-md-4">
-                    <div class="input-group">
-                        <!-- Precio Input Group -->
-                        <span class="input-group-text">Precio</span>
-                        <input type="text" class="form-control" value="$1998.98" id="precio1" readonly>
-                        <span class="input-group-text">MXN</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-                <!-- Producto 2 -->
                 <div class="card mb-3">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-9">
-                                <h5 class="card-title d-inline">Carne seca</h5>
-                            </div>
-                            <div class="col-3 text-end">
-                                <img src="BeefJerky.png" class="card-img-right img-fluid" alt="Producto 1">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6 col-md-4">
-                                <div class="input-group">
-                                    <!-- Cantidad Input Group -->
+                            <!-- Contenido del producto -->
+                            <div class="col-md-8 d-flex flex-column justify-content-start">
+                                <h5 class="card-title">Cama para perro cuadrada</h5>
+
+                                <!-- Cantidad -->
+                                <div class="d-flex align-items-center mt-3">
                                     <span class="input-group-text">Cantidad</span>
-                                    <input type="number" class="form-control" value="5" min="1" id="cantidad2">
-                                    <span class="input-group-text">
-                                        <i class="fas fa-cart-plus"></i>
+                                    <input type="number" class="form-control w-25 ms-2" value="2" min="1"
+                                        id="cantidad1">
+                                    <span class="input-group-text ms-2">
+                                        <i class="fas fa-pencil-alt"></i>
                                     </span>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-sm-6 col-md-4">
-                                <div class="input-group">
-                                    <!-- Precio Input Group -->
+
+                                <!-- Precio -->
+                                <div class="d-flex align-items-center mt-3">
                                     <span class="input-group-text">Precio</span>
-                                    <input type="text" class="form-control" value="$274.95" id="precio2" readonly>
-                                    <span class="input-group-text">MXN</span>
+                                    <input type="text" class="form-control w-25 ms-2" value="$1998.98" id="precio1"
+                                        readonly>
+                                    <span class="input-group-text ms-2">MXN</span>
                                 </div>
+                            </div>
+
+                            <!-- Imagen del producto -->
+                            <div class="col-md-4 d-flex justify-content-end align-items-center">
+                                <img src="https://vicvaporuh.github.io/VL_Pract1_PW.github.io/CamaCuadradaPerro.jpg"
+                                    class="img-fluid" alt="Producto 1">
                             </div>
                         </div>
                     </div>
                 </div>
+                
             </div>
-
             <!-- Total de compra -->
             <div class="col-md-4 total-section">
                 <div class="card total-card">
@@ -183,16 +147,17 @@
                             <button class="btn btn-success w-100 py-3 mb-2">Pagar</button>
                             <button class="btn btn-danger w-100 py-2">Cancelar</button>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+                crossorigin="anonymous">
+            </script>
+            <script type="module" src="scripts.js"></script>
 </body>
 
 </html>
