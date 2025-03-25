@@ -1,0 +1,74 @@
+[
+    {
+        "category": "DogTreat",
+        "name": "Premios_gourmet",
+        "price": 49.99,
+        "quantity": 10,
+        "imgUrl": "https://i.imgur.com/Yn8K3SG.jpeg",
+        "description": "Premios gourmet para el más querido de la familia."
+    },
+    {
+        "category": "DogTreat",
+        "name": "Premios_de_calabaza",
+        "price": 39.99,
+        "quantity": 10,
+        "imgUrl": "https://i.imgur.com/7OFeqcF.jpeg",
+        "description": "Premios de calabaza para aquellos con gustos distintos."
+    },
+    {
+        "category": "DogTreat",
+        "name": "Premios_de_fresa",
+        "price": 44.99,
+        "quantity": 10,
+        "imgUrl": "https://i.imgur.com/yA78DoP.jpeg",
+        "description": "Premios de fresa para los seres distinguidos."
+    },
+    {
+        "category": "DogTreat",
+        "name": "Premios_de_mango",
+        "price": 44.99,
+        "quantity": 10,
+        "imgUrl": "https://i.imgur.com/rZG0Kt7.jpeg",
+        "description": "Premios de mango para los más dulces."
+    },
+    {
+        "category": "DogTreat",
+        "name": "Premios_de_chocolate",
+        "price": 39.99,
+        "quantity": 10,
+        "imgUrl": "https://i.imgur.com/tMw05Zl.png",
+        "description": "Chocolate seguro para el perro, que no se pierda la oportunidad."
+    },
+    {
+        "category": "DogTreat",
+        "name": "Premios_de_variedad",
+        "price": 24.99,
+        "quantity": 10,
+        "imgUrl": "",
+        "description": "Variedad de premios para que no se quede con ganas de más."
+    },
+    {
+        "category": "DogTreat",
+        "name": "Premios_de_carne-seca",
+        "price": 54.99,
+        "quantity": 10,
+        "imgUrl": "https://i.imgur.com/GwM50D4.png",
+        "description": "Carne seca para el consentido de la casa."
+    },
+    {
+        "category": "DogTreat",
+        "name": "Premios_de_pollo-deshidratado",
+        "price": 54.99,
+        "quantity": 10,
+        "imgUrl": "https://i.imgur.com/m3apg0M.jpeg",
+        "description": "Pollo deshidratado, el preferido para el niño."
+    }
+]
+
+                        <img src="GourmetTreat.jpg" class="card-img-top img-fluid ps-3 pt-3 pe-3" alt="Premio Gourmet">
+                        <div class="card-body d-flex flex-column">
+                            <p class="card-text ms-4 me-4">Premios gourmet para el más querido de la familia.
+                                <br> <br>
+                                1 paquete por 49.99 MX
+                            </p>
+                        </div>
