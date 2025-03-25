@@ -62,13 +62,70 @@
         "quantity": 10,
         "imgUrl": "https://i.imgur.com/m3apg0M.jpeg",
         "description": "Pollo deshidratado, el preferido para el niño."
+    },
+	{
+        "category": "DogBed",
+        "name": "Cama-anti-estres",
+        "price": 859.69,
+        "quantity": 10,
+        "imgUrl": "https://vicvaporuh.github.io/VL_Pract1_PW.github.io/CamaAntiEstres.png",
+        "description": "Cama anti estres para el mas chambeador de la casa. "
+    },
+	{
+        "category": "DogBed",
+        "name": "Cama-calientita",
+        "price": 580,
+        "quantity": 10,
+        "imgUrl": "https://vicvaporuh.github.io/VL_Pract1_PW.github.io/CamaCalientita.png",
+        "description": "La cria es friolenta, esta cama calientita es para ti. "
+    },
+	{
+        "category": "DogBed",
+        "name": "Cama-cuadrada",
+        "price": 999.99,
+        "quantity": 10,
+        "imgUrl": "https://vicvaporuh.github.io/VL_Pract1_PW.github.io/CamaCuadradaPerro.jpg",
+        "description": "Diseñada para los lobos defensores. "
+    },
+	{
+        "category": "DogBed",
+        "name": "Cama-ecologica",
+        "price": 799.99,
+        "quantity": 10,
+        "imgUrl": "https://vicvaporuh.github.io/VL_Pract1_PW.github.io/CamaEcologicaPerro.jpeg",
+        "description": "Cuidando al medio ambiente, y a la bendicion con esta cama ecologica. "
+    },
+	{
+        "category": "DogBed",
+        "name": "Cama-elevada",
+        "price": 999.99,
+        "quantity": 10,
+        "imgUrl": "https://vicvaporuh.github.io/VL_Pract1_PW.github.io/CamaElevada.png",
+        "description": " Cama elevada para aquellos haters del piso. "
+    },
+	{
+        "category": "DogBed",
+        "name": "Cama-doble",
+        "price": 1800.00,
+        "quantity": 10,
+        "imgUrl": "https://vicvaporuh.github.io/VL_Pract1_PW.github.io/CamaPerroHumano.jpg",
+        "description": "Por si el niño le tiene miedo a dormir solo esta cama doble es para ti."
+    },
+	{
+        "category": "DogBed",
+        "name": "Cama-sillon",
+        "price": 1350.00,
+        "quantity": 10,
+        "imgUrl": "https://vicvaporuh.github.io/VL_Pract1_PW.github.io/SillonPerro.jpg",
+        "description": "Tu perro quiere incluirse a la reunion, esta es la solucion. "
+    },
+	{
+        "category": "DogBed",
+        "name": "Cama-sillon-deluxe",
+        "price": 4999.99,
+        "quantity": 10,
+        "imgUrl": "https://vicvaporuh.github.io/VL_Pract1_PW.github.io/SillonPerroDeluxe.png",
+        "description": "Para los perros mas finos del condado, un sillon deluxe."
     }
 ]
 
-                        <img src="GourmetTreat.jpg" class="card-img-top img-fluid ps-3 pt-3 pe-3" alt="Premio Gourmet">
-                        <div class="card-body d-flex flex-column">
-                            <p class="card-text ms-4 me-4">Premios gourmet para el más querido de la familia.
-                                <br> <br>
-                                1 paquete por 49.99 MX
-                            </p>
-                        </div>
