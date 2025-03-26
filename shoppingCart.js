@@ -68,52 +68,67 @@ class ShoppingCart {
         }
     }
 
-    // Función para renderizar los productos del carrito en la página
-    renderCartItems() {
-        if (this.cartContainerElement) {
-            this.cartContainerElement.innerHTML = '';  // Limpiar el contenedor antes de agregar los productos
+// Función para renderizar los productos del carrito en la página
+renderCartItems() {
+    if (this.cartContainerElement) {
+        this.cartContainerElement.innerHTML = '';  // Limpiar el contenedor antes de agregar los productos
 
-            this.cart.forEach(item => {
-                // Generamos el HTML para cada producto en el carrito
-                const productHTML = `
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <div class="row">
-                                <!-- Contenido del producto -->
-                                <div class="col-md-8 d-flex flex-column justify-content-start">
-                                    <h5 class="card-title">${item.product.name}</h5>
+        this.cart.forEach(item => {
+            // Generamos el HTML para cada producto en el carrito
+            const productHTML = `
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Contenido del producto -->
+                            <div class="col-md-8 d-flex flex-column justify-content-start">
+                                <h5 class="card-title">${item.product.name}</h5>
 
-                                    <!-- Cantidad -->
-                                    <div class="d-flex align-items-center mt-3">
-                                        <span class="input-group-text">Cantidad</span>
-                                        <input type="number" class="form-control w-25 ms-2" value="${item.amount}" min="1" id="cantidad${item.product._id}">
-                                        <span class="input-group-text ms-2">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </span>
-                                    </div>
-
-                                    <!-- Precio -->
-                                    <div class="d-flex align-items-center mt-3">
-                                        <span class="input-group-text">Precio</span>
-                                        <input type="text" class="form-control w-25 ms-2" value="$${item.product.price.toFixed(2) * item.amount}" id="precio${item.product._id}" readonly>
-                                        <span class="input-group-text ms-2">MXN</span>
-                                    </div>
+                                <!-- Cantidad -->
+                                <div class="d-flex align-items-center mt-3">
+                                    <span class="input-group-text">Cantidad</span>
+                                    <input type="number" class="form-control w-25 ms-2 cantidad-input" value="${item.amount}" min="1" data-id="${item.product._id}">
+                                    <span class="input-group-text ms-2">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </span>
                                 </div>
 
-                                <!-- Imagen del producto -->
-                                <div class="col-md-4 d-flex justify-content-end align-items-center">
-                                    <img src="${item.product.imgUrl}" class="img-fluid" alt="Producto ${item.product._id}">
+                                <!-- Precio -->
+                                <div class="d-flex align-items-center mt-3">
+                                    <span class="input-group-text">Precio</span>
+                                    <input type="text" class="form-control w-25 ms-2" value="$${(item.product.price * item.amount).toFixed(2)}" readonly>
+                                    <span class="input-group-text ms-2">MXN</span>
                                 </div>
+                            </div>
+
+                            <!-- Imagen del producto -->
+                            <div class="col-md-4 d-flex justify-content-end align-items-center">
+                                <img src="${item.product.imgUrl}" class="img-fluid" alt="Producto ${item.product._id}">
                             </div>
                         </div>
                     </div>
-                `;
+                </div>
+            `;
 
-                // Insertamos el HTML generado en el contenedor
-                this.cartContainerElement.innerHTML += productHTML;
+            // Insertamos el HTML generado en el contenedor
+            this.cartContainerElement.innerHTML += productHTML;
+        });
+
+        // Agregar eventListener a los inputs de cantidad después de renderizar el HTML
+        document.querySelectorAll('.cantidad-input').forEach(input => {
+            input.addEventListener('change', (event) => {
+                const productId = event.target.getAttribute('data-id');
+                const newAmount = parseInt(event.target.value, 10);
+
+                // Buscar el producto en el carrito
+                const product = this.cart.find(item => item.product._id === productId);
+                if (product) {
+                    this.updateItem(product.product, newAmount);
+                }
             });
-        }
+        });
     }
+}
+
 
     // Función para actualizar el total de compra en la UI
     updateTotalCompra() {

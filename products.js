@@ -120,12 +120,16 @@ renderProductCard() {
 // Agregar evento para añadir el producto al carrito al hacer clic en la imagen
 const img = card.querySelector('img');
 img.addEventListener('click', () => {
-    // Aquí asumimos que `this` es un objeto de tipo `Producto` dentro del contexto del card
     console.log(`Imagen clickeada: ${this.name}`);
 
-    // Ahora le pasamos el objeto `Producto` completo a `addItem`
-    shoppingCart.addItem(this, 1); // `this` es la instancia de Producto que se debe pasar
+    if (this.quantity > 0) {
+        shoppingCart.addItem(this, 1); // Agregar si hay stock disponible
+        this.quantity--; // Reducir la cantidad disponible después de agregar
+    } else {
+        alert(`No hay stock disponible para ${this.name}`);
+    }
 });
+
 
     return card;
 }
