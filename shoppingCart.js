@@ -117,6 +117,7 @@ class ShoppingCart {
 
     // Función para actualizar el total de compra en la UI
     updateTotalCompra() {
+        console.log("Cart from localStorage:", localStorage.getItem('cart'));
         if (this.totalItemsListElement) {
             let totalHTML = '';
             this.cart.forEach(item => {
