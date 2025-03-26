@@ -1,11 +1,15 @@
 class ShoppingCart {
     constructor() {
-        const storedCart = JSON.parse(localStorage.getItem('cart'));
-        this.cart = Array.isArray(storedCart) ? storedCart : [];
-        this.cartCountElement = document.getElementById('cart-count');
-        this.cartContainerElement = document.getElementById('cart-container');
-        this.updateCartCount();
-        this.renderCartItems();  // Llamamos a la función para renderizar los productos al cargar la página
+        document.addEventListener("DOMContentLoaded", () => {
+            const storedCart = JSON.parse(localStorage.getItem('cart'));
+            this.cart = Array.isArray(storedCart) ? storedCart : [];
+            this.cartCountElement = document.getElementById('cart-count');
+            this.cartContainerElement = document.getElementById('cart-container');
+            this.totalItemsListElement = document.getElementById('total-items-list');  // Asegúrate de que este ID exista
+            this.updateCartCount();
+            this.renderCartItems();  // Llamamos a la función para renderizar los productos al cargar la página
+            this.updateTotalCompra();  // Actualizamos el total de compra al cargar la página
+        });
     }
 
     // Agregar un producto al carrito
@@ -44,11 +48,17 @@ class ShoppingCart {
         return this.cart.reduce((sum, item) => sum + item.amount, 0);
     }
 
+    // Calcular el total de la compra en base al precio y cantidad
+    getTotalPrice() {
+        return this.cart.reduce((sum, item) => sum + (item.product.price * item.amount), 0).toFixed(2);
+    }
+
     // Guardar el carrito en localStorage y actualizar el contador
     saveCart() {
         localStorage.setItem('cart', JSON.stringify(this.cart));
         this.updateCartCount();
         this.renderCartItems();  // Volver a renderizar los productos después de actualizar el carrito
+        this.updateTotalCompra();  // Actualizamos el total de la compra
     }
 
     // Actualizar el número de productos en la UI
@@ -85,7 +95,7 @@ class ShoppingCart {
                                     <!-- Precio -->
                                     <div class="d-flex align-items-center mt-3">
                                         <span class="input-group-text">Precio</span>
-                                        <input type="text" class="form-control w-25 ms-2" value="$${item.product.price.toFixed(2)}" id="precio${item.product._id}" readonly>
+                                        <input type="text" class="form-control w-25 ms-2" value="$${item.product.price.toFixed(2) * item.amount}" id="precio${item.product._id}" readonly>
                                         <span class="input-group-text ms-2">MXN</span>
                                     </div>
                                 </div>
@@ -102,6 +112,31 @@ class ShoppingCart {
                 // Insertamos el HTML generado en el contenedor
                 this.cartContainerElement.innerHTML += productHTML;
             });
+        }
+    }
+
+    // Función para actualizar el total de compra en la UI
+    updateTotalCompra() {
+        if (this.totalItemsListElement) {
+            let totalHTML = '';
+            this.cart.forEach(item => {
+                totalHTML += `
+                    <div class="d-flex justify-content-between">
+                        <p>${item.product.name}: ${item.amount} x $${item.product.price.toFixed(2)}</p>
+                        <p>$${(item.product.price * item.amount).toFixed(2)}</p>
+                    </div>
+                `;
+            });
+
+            totalHTML += `
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <h5>Monto a pagar</h5>
+                    <h5>$${this.getTotalPrice()}</h5>
+                </div>
+            `;
+
+            this.totalItemsListElement.innerHTML = totalHTML;
         }
     }
 }
