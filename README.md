@@ -1,8 +1,17 @@
 Conclusion:
-Como conclusion a este trabajo es que me parecio muy interesante la manera en la que bootstrap esta construido para poder ser utilizado de forma tan facil y con tantas extensiones posibles por usar. Definitivamente aprendi a como
-usar tanto html como css y bootstrap para el diseño de paginas web responsivas y la forma en la que aplicar los estilos ya utilizados hace mucho mas rapido el diseño de paginas webs.
-En este proyecto aprendi sobre como hacer una pagina web por completo sin embargo lo que mas me costo problema fue añadir iconos externos asi como ajustar los modulos a los lugares que quiero
-mientras se mantiene el diseño responsivo y un buen ajuste en ambas partes. le dedique una gran cantidad de tiempo a la practica ya que al ser estudiante de electronica es mi primera vez utilizando lenguajes de este tipo asi como
-construyendo paginas web, tambien al ser un enfoque distinto de programacion me costo trabajo entenderle y aun asi no alcance a terminar debido a que tuve que dedicarle mas tiempo a practicas de 
-materias de la carrera.
-Para finalizar me parecio muy util la utilizacion de bootstrap para hacer paginas web con un diseño bonito y logrando no solo esto sino tambien que sea rapido.
+En conclusion a eta practica, es que al realizarla logre entender de mejor manera los temas vistos en clase ya que el hecho de ya
+hacer el manejeo entre html y javascript para algo mas elaborado como altas y bajas de productos, distintas paginas y paginacion dinamica
+entonces ya se mete un enfoque distinto entre html y javascript sin embargo despues de bastante trabajo se logro hacerlo y aunque estoy conciente
+que tiene muchos detalles por mejorar como algunos bugs, legibilidad de codigo o algunas cosas que hubieran estado mejor hacerlas de otra manera, 
+considero muy relevante el aprendizaje que me lleve al realizar esta practica del manejo entre frontend y backend.
+Algo que no me gusto es que al tener que usar crudcrud se tienen limitaciones entre las requests que se pueden usar y al estar haciendo muchas pruebas se volvio muy facil acabarselas por lo que habia que estar creando nuevos cruds, otro detalle es que crudcrud no permite que le mandes solicitudes en forma de arreglo
+por lo que fue necesario realizar n numero de solicitudes para n numeros de productos lo cual fue cansado sin embargo fue posible realizarlo y
+aun con todas las dificultades no solo de conocimiento sino tambien de tiempo ya que al igual que la practica pasada me hubiera gustado dedicarle mas tiempo
+pero por materias de la carrera no me fue posible dedicarle ese tiempo sin embargo considero que hice un buen trabajo y que demuestro el conocimiento
+adquirido durante la clase.
+*********************
+Consideraciones:
+-En canvas esta adjunto una coleccion de postman que fue la que use para agregar productos.
+-Utilice local storage para guardar el carrito y crud crud para los productos.
+-En canvas solo esta el pokemon sin embargo en el github a continuacion esta la pagina y sus archivos (solo hay que volver a crear el crud y agregar los productos): https://github.com/VicVaporuh/VL_Pract2_PW.github.io-
+-Se adjunta un video del funcionamiento de la pagina: https://youtu.be/MQzwVmaYHoE
