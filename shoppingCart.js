@@ -26,16 +26,32 @@ class ShoppingCart {
 
     // Actualizar la cantidad de un producto
     updateItem(product, newAmount) {
+        // Verificamos si la nueva cantidad es cero o negativa
         if (newAmount <= 0) {
-            this.removeItem(product);
-        } else {
-            const existingProduct = this.cart.find(item => item.product._id === product._id);
-            if (existingProduct) {
-                existingProduct.amount = newAmount;
-                this.saveCart();
+            if (newAmount === 0) {
+                this.removeItem(product);
+            } else {
+                alert(`No están permitidos números negativos`);
             }
+            return;
+        }
+    
+        // Verificamos si la cantidad nueva es mayor que el stock disponible
+        if (newAmount > product.quantity) {
+            alert(`No puedes agregar más de ${product.quantity} unidades de este producto.`);
+            return;
+        }
+    
+        const existingProduct = this.cart.find(item => item.product._id === product._id);
+        if (existingProduct) {
+            existingProduct.amount = newAmount;  // Actualizamos la cantidad
+            this.saveCart();  // Guardamos el carrito actualizado en localStorage
+        } else {
+            alert("Producto no encontrado en el carrito.");
         }
     }
+    
+    
 
     // Eliminar un producto del carrito
     removeItem(product) {
@@ -55,11 +71,13 @@ class ShoppingCart {
 
     // Guardar el carrito en localStorage y actualizar el contador
     saveCart() {
+        // Guardamos el carrito en localStorage
         localStorage.setItem('cart', JSON.stringify(this.cart));
-        this.updateCartCount();
-        this.renderCartItems();  // Volver a renderizar los productos después de actualizar el carrito
+        this.updateCartCount();  // Actualizamos el contador del carrito
+        this.renderCartItems();  // Volver a renderizar los productos
         this.updateTotalCompra();  // Actualizamos el total de la compra
     }
+    
 
     // Actualizar el número de productos en la UI
     updateCartCount() {

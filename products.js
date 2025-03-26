@@ -15,9 +15,27 @@ class Product {
         this.setCategory(category);
         this.setName(name);
         this.setPrice(price);
-        this.setQuantity(quantity);
+        this.setQuantity(quantity); // Usamos el setter para quantity
         this.setImgUrl(imgUrl);
         this.setDescription(description);
+        this.setActualQuantity(quantity); // Llamamos al setter de actualQuantity
+    }
+
+    // Getter y Setter de actualQuantity
+    get actualQuantity() {
+        return this._actualQuantity;
+    }
+
+    set actualQuantity(quantity) {
+        if (typeof quantity !== 'number' || quantity < 0) {
+            throw new ProductException('La cantidad actual debe ser un número positivo');
+        }
+        this._actualQuantity = quantity;
+    }
+
+    // Método para asignar la cantidad actual (usando el setter)
+    setActualQuantity(quantity) {
+        this.actualQuantity = quantity; // Esto usa el setter de actualQuantity
     }
 
     // Getter y Setter con validaciones
@@ -74,6 +92,7 @@ class Product {
             throw new ProductException('La cantidad debe ser un número positivo');
         }
         this.quantity = quantity;
+        this.actualQuantity = quantity;
     }
 
     getImgUrl() {
@@ -122,9 +141,10 @@ const img = card.querySelector('img');
 img.addEventListener('click', () => {
     console.log(`Imagen clickeada: ${this.name}`);
 
-    if (this.quantity > 0) {
+    if (this.actualQuantity > 0) {
         shoppingCart.addItem(this, 1); // Agregar si hay stock disponible
-        this.quantity--; // Reducir la cantidad disponible después de agregar
+        this.actualQuantity--;
+        console.log("Cantidad actual:", this.actualQuantity);
     } else {
         alert(`No hay stock disponible para ${this.name}`);
     }
